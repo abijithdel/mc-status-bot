@@ -7,7 +7,7 @@ async function offlineEmbed(channel, title, ip){
     .setThumbnail(
       "https://cdn.icon-icons.com/icons2/2699/PNG/512/minecraft_logo_icon_168974.png"
     )
-    .setColor("DarkGreen")
+    .setColor("Red")
     .addFields(
       {
         name: "Players",

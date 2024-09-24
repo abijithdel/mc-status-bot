@@ -1,4 +1,5 @@
 const { mcStatuseMbed } = require("../../events/mcstatusembed");
+const { ping } = require('../cmd/ping')
 function slashCommands(client) {
   client.on("interactionCreate", async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
@@ -12,6 +13,9 @@ function slashCommands(client) {
       const serverPort = options.getInteger("port");
       const channelID = interaction.channelId
       mcStatuseMbed(interaction,version,title,serverIP,serverPort,channelID, client);
+    }
+    if (commandName == "ping"){
+      ping(interaction, client)
     }
   });
 }

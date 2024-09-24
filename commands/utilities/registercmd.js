@@ -46,6 +46,10 @@ const commands = [
       },
     ],
   },
+  {
+    name:'ping',
+    description:'Check bot ping'
+  },
 ];
 
 const rest = new REST({ version: "10" }).setToken(config.TOKEN);
