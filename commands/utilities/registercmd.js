@@ -50,6 +50,24 @@ const commands = [
     name:'ping',
     description:'Check bot ping'
   },
+  {
+    name:'ban',
+    description: 'Ban User',
+    options: [
+      {
+        name: 'user',
+        description: 'Select a User',
+        type: ApplicationCommandOptionType.User,
+        required: true
+      },
+      {
+        name:'reason',
+        description: 'reason of the ban',
+        type: ApplicationCommandOptionType.String,
+        required: false
+      }
+    ]
+  }
 ];
 
 const rest = new REST({ version: "10" }).setToken(config.TOKEN);

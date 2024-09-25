@@ -1,5 +1,6 @@
 const { mcStatuseMbed } = require("../../events/mcstatusembed");
 const { ping } = require('../cmd/ping')
+const { ban } = require('../cmd/ban')
 function slashCommands(client) {
   client.on("interactionCreate", async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
@@ -16,6 +17,11 @@ function slashCommands(client) {
     }
     if (commandName == "ping"){
       ping(interaction, client)
+    }
+    if (commandName == 'ban') {
+      const user = options.getUser('user')
+      const reason = options.getString('reason')
+      ban(interaction,user,reason)
     }
   });
 }
