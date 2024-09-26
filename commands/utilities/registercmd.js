@@ -1,8 +1,4 @@
-const {
-  REST,
-  Routes,
-  ApplicationCommandOptionType,
-} = require("discord.js");
+const { REST, Routes, ApplicationCommandOptionType } = require("discord.js");
 const config = require("../../config");
 
 // Define the command
@@ -19,13 +15,13 @@ const commands = [
         choices: [
           {
             name: "Java",
-            value: "java"
+            value: "java",
           },
           {
             name: "Bedrock",
-            value: "bedrock"
-          }
-        ]
+            value: "bedrock",
+          },
+        ],
       },
       {
         name: "title",
@@ -47,27 +43,99 @@ const commands = [
     ],
   },
   {
-    name:'ping',
-    description:'Check bot ping'
+    name: "ping",
+    description: "Check bot ping",
   },
   {
-    name:'ban',
-    description: 'Ban User',
+    name: "ban",
+    description: "Ban User",
     options: [
       {
-        name: 'user',
-        description: 'Select a User',
+        name: "user",
+        description: "Select a User",
         type: ApplicationCommandOptionType.User,
-        required: true
+        required: true,
       },
       {
-        name:'reason',
-        description: 'reason of the ban',
+        name: "reason",
+        description: "reason of the ban",
         type: ApplicationCommandOptionType.String,
-        required: false
-      }
-    ]
-  }
+        required: false,
+      },
+    ],
+  },
+  {
+    name: "unban",
+    description: "unban a member",
+    options: [
+      {
+        name: "user",
+        description: "user to unban. (username or user ID)",
+        type: ApplicationCommandOptionType.String,
+        required: true,
+      },
+      {
+        name: "reason",
+        description: "reason of the unban",
+        type: ApplicationCommandOptionType.String,
+        required: false,
+      },
+    ],
+  },
+  {
+    name: "timeout",
+    description: "Timeout User",
+    options: [
+      {
+        name: "user",
+        description: "The User to Timeout",
+        type: ApplicationCommandOptionType.User,
+        required: true,
+      },
+      {
+        name: "duration",
+        description: "How long they should be timed out for",
+        type: ApplicationCommandOptionType.Number,
+        required: false,
+        choices: [
+          {
+            name: "60 secs",
+            value: 60 * 1000,
+          },
+          {
+            name: "10 mins",
+            value: 10 * 60 * 100,
+          },
+          {
+            name: "1 day",
+            value: 24 * 60 * 60 * 1000,
+          },
+          {
+            name: "1 week",
+            value: 7 * 24 * 60 * 60 * 1000,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "kick",
+    description: "Kick a User",
+    options: [
+      {
+        name: "user",
+        description: "the user to kick",
+        type: ApplicationCommandOptionType.User,
+        required: true,
+      },
+      {
+        name: "reason", 
+        description: "reason of the kick",
+        type: ApplicationCommandOptionType.String,
+        required: false,
+      },
+    ],
+  },
 ];
 
 const rest = new REST({ version: "10" }).setToken(config.TOKEN);

@@ -13,16 +13,16 @@ async function mcStatus(ip, port, version) {
           reject(err);
         });
     });
-  }else if(version == 'bedrock'){
+  } else if (version == "bedrock") {
     return new Promise((resolve, reject) => {
-        MinecraftServerUtil.statusBedrock(ip, portnum)
-        .then((data)=>{
-            resolve(data)
+      MinecraftServerUtil.statusBedrock(ip, portnum)
+        .then((data) => {
+          resolve(data);
         })
-        .catch((err)=>{
-            reject(err)
-        })
-    })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   }
 }
 
