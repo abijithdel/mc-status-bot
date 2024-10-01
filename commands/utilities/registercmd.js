@@ -136,6 +136,14 @@ const commands = [
       },
     ],
   },
+  {
+    name:'help',
+    description: 'View Help'
+  },
+  {
+    name: 'about',
+    description: 'About Me'
+  }
 ];
 
 const rest = new REST({ version: "10" }).setToken(config.TOKEN);

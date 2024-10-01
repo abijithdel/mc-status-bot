@@ -13,7 +13,7 @@ async function ban(interaction, user, reason) {
       return await interaction.reply("You need to be an administrator to use this command.");
     }
 
-    // Check if the user exists
+    // Fetch the target member
     const member = await interaction.guild.members.fetch(user.id).catch(() => null);
     if (!member) {
       return await interaction.reply({
@@ -30,18 +30,24 @@ async function ban(interaction, user, reason) {
       });
     }
 
-    // Prevent banning users with higher roles or permissions
-    if (member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+    // Check if the member has a higher role than the bot
+    if (member.roles.highest.position >= interaction.guild.members.me.roles.highest.position) {
       return await interaction.reply({
-        content: "You cannot ban an administrator.",
+        content: "I cannot ban this user as they have a higher or equal role than mine.",
+        ephemeral: true,
+      });
+    }
+
+    // Prevent banning administrators or users with higher roles than the command issuer
+    if (member.roles.highest.position >= interaction.member.roles.highest.position) {
+      return await interaction.reply({
+        content: "You cannot ban someone with a higher or equal role than yours.",
         ephemeral: true,
       });
     }
 
     // If no reason is provided, set a default reason
-    if (!reason) {
-      reason = "No reason provided";
-    }
+    reason = reason ? reason.slice(0, 512) : "No reason provided"; // Limit reason length to 512 characters
 
     // Ban the member
     await member.ban({ reason });

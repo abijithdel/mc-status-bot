@@ -44,6 +44,12 @@ function slashCommands(client) {
       const reason = options.getString('reason')
       kick(interaction,user,reason)
     }
+    if(commandName == 'help'){
+      interaction.reply('.....!')
+    }
+    if(commandName == 'about'){
+      interaction.reply('bot')
+    }
   });
 }
 
