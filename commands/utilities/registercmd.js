@@ -143,7 +143,20 @@ const commands = [
   {
     name: 'about',
     description: 'About Me'
-  }
+  },
+  {
+    name: 'qrcode',
+    description: 'Create QRCode',
+    options: [
+      {
+        name:'url',
+        description: 'Enter URL',
+        type: ApplicationCommandOptionType.String,
+        required: true
+      }
+    ]
+  },
+
 ];
 
 const rest = new REST({ version: "10" }).setToken(config.TOKEN);

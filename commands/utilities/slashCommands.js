@@ -4,6 +4,7 @@ const { ban } = require('../cmd/ban')
 const { unban } = require('../cmd/unban')
 const { timeoutf } = require('../cmd/timeout')
 const { kick } = require('../cmd/kick')
+const { qrcode } = require('../cmd/qrcode')
 function slashCommands(client) {
   client.on("interactionCreate", async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
@@ -49,6 +50,10 @@ function slashCommands(client) {
     }
     if(commandName == 'about'){
       interaction.reply('bot')
+    }
+    if(commandName == 'qrcode'){
+      const qrCodeURL = options.getString('url')
+      qrcode(qrCodeURL, interaction)
     }
   });
 }
