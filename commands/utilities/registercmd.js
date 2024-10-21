@@ -129,7 +129,7 @@ const commands = [
         required: true,
       },
       {
-        name: "reason", 
+        name: "reason",
         description: "reason of the kick",
         type: ApplicationCommandOptionType.String,
         required: false,
@@ -137,26 +137,53 @@ const commands = [
     ],
   },
   {
-    name:'help',
-    description: 'View Help'
+    name: "help",
+    description: "View Help",
   },
   {
-    name: 'about',
-    description: 'About Me'
+    name: "about",
+    description: "About Me",
   },
   {
-    name: 'qrcode',
-    description: 'Create QRCode',
+    name: "qrcode",
+    description: "Create QRCode",
     options: [
       {
-        name:'url',
-        description: 'Enter URL',
+        name: "url",
+        description: "Enter URL",
         type: ApplicationCommandOptionType.String,
-        required: true
-      }
-    ]
+        required: true,
+      },
+    ],
   },
-
+  {
+    name: "ticket",
+    description: "Create a Ticket Pannel",
+    options: [
+      {
+        name: "servername",
+        description: "Enter Your Server Name (in Footer)",
+        type: ApplicationCommandOptionType.String,
+        required: true,
+      },
+      {
+        name: "channel",
+        description: "Text Chennel",
+        type: ApplicationCommandOptionType.Channel,
+        required: true,
+      },
+      {
+        name: "title",
+        description: "Pannel Title",
+        type: ApplicationCommandOptionType.String,
+      },
+      {
+        name: "description",
+        description: "Pannel Description",
+        type: ApplicationCommandOptionType.String,
+      },
+    ],
+  },
 ];
 
 const rest = new REST({ version: "10" }).setToken(config.TOKEN);
