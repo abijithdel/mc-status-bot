@@ -7,6 +7,7 @@ const { kick } = require("../cmd/kick");
 const { qrcode } = require("../cmd/qrcode");
 const { TicketSystem } =require('../cmd/ticketPanel')
 const { Buttons } = require('../../events/buttons')
+const { say } = require('../cmd/say')
 
 function slashCommands(client) {
   client.on("interactionCreate", async (interaction) => {
@@ -80,6 +81,11 @@ function slashCommands(client) {
       const Description = options.getString("description");
       const channel = options.getChannel("channel");
       TicketSystem(ServerName, Title, Description, channel, interaction);
+    }
+
+    if(commandName == 'say'){
+      const message = options.getString('message')
+      say(message, interaction)
     }
   });
 }

@@ -184,6 +184,18 @@ const commands = [
       },
     ],
   },
+  {
+    name: 'say',
+    description: 'Say Message',
+    options: [
+      {
+        name: 'message',
+        description: 'Enter Message here',
+        type: ApplicationCommandOptionType.String,
+        required: true
+      }
+    ]
+  }
 ];
 
 const rest = new REST({ version: "10" }).setToken(config.TOKEN);
