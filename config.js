@@ -1,5 +1,10 @@
 module.exports = {
+    // Bot Config
     TOKEN : '',
-    BOTID : '' 
+    BOTID : '' ,
+
+    // Ticket
+
+    STAFFROLE_ID:  ''
     
 }

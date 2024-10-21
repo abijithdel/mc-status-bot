@@ -5,24 +5,25 @@ const {
     ActionRowBuilder,
 } = require("discord.js");
 
-async function TicketPanel(name, title, description, channel, interaction) {
+async function TicketChannel(channelName, User, channel, category) {
     // Create buttons
     const cancel = new ButtonBuilder()
-        .setCustomId("support") // Use a simpler custom ID
-        .setLabel("Support")
-        .setStyle(ButtonStyle.Success);
+        .setCustomId("cancel") // Use a simpler custom ID
+        .setLabel("Cancel")
+        .setStyle(ButtonStyle.Danger);
 
     const claim = new ButtonBuilder()
-        .setCustomId("report") // Use a simpler custom ID
-        .setLabel("Report")
-        .setStyle(ButtonStyle.Secondary);
+        .setCustomId("claim") // Use a simpler custom ID
+        .setLabel("Claim")
+        .setStyle(ButtonStyle.Success);
 
     // Create embed
     const embed = new EmbedBuilder()
-        .setTitle(title)
-        .setDescription(description)
+        .setTitle(channelName)
+        .setDescription(`<@${User}>! has created a ticket under ${category} category.`)
         .setColor("DarkOrange")
-        .setFooter({ text: name });
+        .setTimestamp()
+        .setFooter({ text: channelName });
 
     // Create action row and add buttons
     const row = new ActionRowBuilder().addComponents(cancel, claim);
@@ -35,4 +36,4 @@ async function TicketPanel(name, title, description, channel, interaction) {
     }
 }
 
-module.exports = { TicketPanel };
+module.exports = { TicketChannel };

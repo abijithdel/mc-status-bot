@@ -6,14 +6,14 @@ const { timeoutf } = require("../cmd/timeout");
 const { kick } = require("../cmd/kick");
 const { qrcode } = require("../cmd/qrcode");
 const { TicketSystem } =require('../cmd/ticketPanel')
-const { TicketSupportButton } = require('../../events/ticketCreateChannel')
+const { Buttons } = require('../../events/buttons')
 
 function slashCommands(client) {
   client.on("interactionCreate", async (interaction) => {
 
     if (!interaction.isChatInputCommand()) {
       if (interaction.isButton()) {
-        TicketSupportButton(interaction);
+        Buttons(interaction);
       } else {
         return;
       }
