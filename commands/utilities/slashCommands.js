@@ -8,6 +8,7 @@ const { qrcode } = require("../cmd/qrcode");
 const { TicketSystem } =require('../cmd/ticketPanel')
 const { Buttons } = require('../../events/buttons')
 const { say } = require('../cmd/say')
+const { embedMessage } = require('../cmd/embed')
 
 function slashCommands(client) {
   client.on("interactionCreate", async (interaction) => {
@@ -86,6 +87,16 @@ function slashCommands(client) {
     if(commandName == 'say'){
       const message = options.getString('message')
       say(message, interaction)
+    }
+
+    if(commandName == 'embed'){
+      const title = options.getString('title')
+      const description = options.getString('description')
+      const time = options.getBoolean('time')
+      const footer = options.getString('footer')
+      const color = options.getString('color')
+
+      embedMessage(title, description, time, footer, color, interaction)
     }
   });
 }

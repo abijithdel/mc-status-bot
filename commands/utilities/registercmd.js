@@ -195,7 +195,75 @@ const commands = [
         required: true
       }
     ]
+  },
+  {
+    name: 'embed',
+    description: 'Create Embed Message',
+    options: [
+      {
+        name: 'title',
+        description: 'Embed Title',
+        type: ApplicationCommandOptionType.String,
+        required: true,
+      },
+      {
+        name: 'description',
+        description: 'Embed Description',
+        type: ApplicationCommandOptionType.String,
+        required: true,
+      },
+      {
+        name: 'time',
+        description: 'Embed Time',
+        type: ApplicationCommandOptionType.Boolean,
+        required: true,
+        choices: [
+          {
+            name: 'True',
+            value: true,
+          },
+          {
+            name: 'False',
+            value: false,
+          },
+        ],
+      },
+      {
+        name: 'color',
+        description: 'Embed Color Theme',
+        type: ApplicationCommandOptionType.String,
+        required: true,
+        choices: [
+          {
+            name: 'blue',
+            value: '#3498DB',
+          },
+          {
+            name: 'green',
+            value: '#57F287',
+          },
+          {
+            name: 'red',
+            value: '#ED4245',
+          },
+          {
+            name: 'grey',
+            value: '#95A5A6',
+          },
+          {
+            name: 'yellow',
+            value: '#FFFF00',
+          },
+        ],
+      },
+      {
+        name: 'footer',
+        description: 'Embed Footer',
+        type: ApplicationCommandOptionType.String,
+      },
+    ],
   }
+  
 ];
 
 const rest = new REST({ version: "10" }).setToken(config.TOKEN);
